@@ -47,7 +47,27 @@ T* merge(const T* a, size_t sa,
         throw length_error("merge: output buffer too small");
     }
     
-    return c;
+    size_t i = 0;
+    size_t j = 0;
+    size_t k = 0;
+    
+    while (i < sa && j < sb) {
+        if (comp(b[j], a[i])) {
+            c[k++] = b[j++];
+        } else {
+            c[k++] = a[i++];
+        }
+    }
+    
+    while (i < sa) {
+        c[k++] = a[i++];
+    }
+    
+    while (j < sb) {
+        c[k++] = b[j++];
+    }
+    
+    return c + k;
 }
 
 int main() {
