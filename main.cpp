@@ -71,5 +71,22 @@ T* merge(const T* a, size_t sa,
 }
 
 int main() {
+    int a[] = {1, 2, 3};
+    int b[] = {2, 4, 5};
+    int c[10];
+    
+    try {
+        int* end = merge(a, 3, b, 3, c, 10);
+        
+        std::cout << "Result: ";
+        for (int* p = c; p != end; ++p) {
+            std::cout << *p << " ";
+        }
+        std::cout << std::endl;
+    } catch (const my_exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        return 1;
+    }
+    
     return 0;
 }
